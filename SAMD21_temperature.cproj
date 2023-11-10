@@ -357,6 +357,9 @@
     <Compile Include="atmel_start_pins.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SAMD21_onewire.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Config\hpl_dmac_config.h">
       <SubType>compile</SubType>
     </Compile>
@@ -631,6 +634,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hri\hri_wdt_d21.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SAMD21_onewire.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
