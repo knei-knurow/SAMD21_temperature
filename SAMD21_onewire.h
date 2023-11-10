@@ -29,7 +29,7 @@ extern "C" {
 #define ONEWIRE_RECALL_E2 0xB8
 #define ONEWIRE_READ_POWER_SUPPLY 0xB4
 
-
+void Onewire_ResetPulse();
 
 #ifdef __cplusplus
 }
