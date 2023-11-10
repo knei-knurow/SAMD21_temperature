@@ -30,6 +30,9 @@ extern "C" {
 #define ONEWIRE_READ_POWER_SUPPLY 0xB4
 
 void Onewire_ResetPulse();
+void Onewire_DetectPresence();
+
+bool Onewire_SensorPresent = false;
 
 #ifdef __cplusplus
 }
