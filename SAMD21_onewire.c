@@ -47,4 +47,5 @@ uint8_t* Onewire_ReadData(uint8_t bytes){
 		data[i/8] |= gpio_get_pin_level(TEMP) << (i%8);
 		delay_us(60);
 	}
+	Onewire_ResetPulse();
 }
