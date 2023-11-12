@@ -26,7 +26,7 @@ void Onewire_DetectPresence(){
 	}
 }
 
-void Onewire_WriteData(int32_t data, uint8_t bits = 24){	//There is no 3-byte data type, so the "bits" param is helpful
+void Onewire_WriteData(uint64_t data, uint8_t bits = 24){
 	for(uint8_t i=0; i<bits; i++){
 		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_OUT);
 		gpio_set_pin_level(TEMP, false);

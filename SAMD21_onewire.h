@@ -31,7 +31,7 @@ extern "C" {
 
 void Onewire_ResetPulse();
 void Onewire_DetectPresence();
-void Onewire_WriteData(int32_t data, uint8_t bits = 24);
+void Onewire_WriteData(uint64_t data, uint8_t bits = 24);
 
 bool Onewire_SensorPresent = false;
 
