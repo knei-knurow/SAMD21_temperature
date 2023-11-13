@@ -31,10 +31,11 @@ extern "C" {
 
 void Onewire_ResetPulse();
 void Onewire_DetectPresence();
-void Onewire_WriteData(uint64_t data, uint8_t bytes = 3);
-uint8_t* Onewire_ReadData(uint8_t bytes);
+void Onewire_WriteData(uint64_t data, uint8_t bytes);
+void Onewire_ReadData(uint8_t bytes);
 
 bool Onewire_SensorPresent = false;
+uint8_t Onewire_Data[9];
 
 #ifdef __cplusplus
 }
