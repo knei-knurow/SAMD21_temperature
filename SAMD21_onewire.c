@@ -13,18 +13,19 @@ void Onewire_ResetPulse(){
 	gpio_set_pin_level(TEMP, false);
 	delay_us(500);
 	gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);
-	delay_us(1);
 }
 
 bool Onewire_DetectPresence(){
-	uint8_t LoopCountdown = 100;	//Adjust the countdown if needed
+	int8_t LoopCountdown = 100;	//Adjust the countdown if needed
 	bool SensorPresent = false;
 	gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);
-	while(!SensorPresent || LoopCountdown > 0){ 
+	gpio_set_pin_level(PINA5, true);
+	while(!SensorPresent && LoopCountdown > 0){
 		SensorPresent = !gpio_get_pin_level(TEMP);
 		LoopCountdown--;
 		delay_us(1);
 	}
+	gpio_set_pin_level(PINA5, false);
 	return SensorPresent;
 }
 
@@ -38,13 +39,15 @@ void Onewire_WriteData(uint64_t data, uint8_t bytes){
 	}
 }
 
-void Onewire_ReadData(uint8_t bytes){		//ReadData is kind of unique as it returns a pointer to an array instead of being void
+void Onewire_ReadData(uint8_t bytes){
 	for(int i=0; i<bytes*8; i++){
 		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_OUT);
 		gpio_set_pin_level(TEMP, false);					//Initiating a Read Time Slot
-		delay_us(2);
+		//delay_us(2);
+		gpio_set_pin_level(PINA5, true);
 		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);
-		delay_us(5);
+		//delay_us(5);
+		gpio_set_pin_level(PINA5, false);
 		Onewire_Data[i/8] |= gpio_get_pin_level(TEMP) << (i%8);
 		delay_us(60);
 	}

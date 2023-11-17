@@ -13,11 +13,15 @@ int main(void)
 	gpio_toggle_pin_level(PINA2);
 	gpio_toggle_pin_level(PINA3);
 	gpio_toggle_pin_level(PINA4);
-	gpio_toggle_pin_level(PINA5);
+	//gpio_toggle_pin_level(PINA5);
 	gpio_toggle_pin_level(PINA6);
 	
 	while (1) {
 		Onewire_ResetPulse();
+		/*gpio_set_pin_direction(TEMP, GPIO_DIRECTION_OUT);
+		gpio_set_pin_level(TEMP, false);
+		delay_us(500);
+		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);*/
 		if(Onewire_DetectPresence()){
 			Onewire_WriteData(ONEWIRE_SKIP_ROM, 1);
 			Onewire_WriteData(ONEWIRE_CONVERT_T, 1);
@@ -25,12 +29,13 @@ int main(void)
 			Onewire_WriteData(ONEWIRE_SKIP_ROM, 1);
 			Onewire_WriteData(ONEWIRE_SCRATCHPAD_READ, 1);
 			Onewire_ReadData(2);
+			delay_ms(200);
 			gpio_set_pin_level(PINA0, Onewire_Data[0] & 16);
 			gpio_set_pin_level(PINA1, Onewire_Data[0] & 32);
 			gpio_set_pin_level(PINA2, Onewire_Data[0] & 64);
 			gpio_set_pin_level(PINA3, Onewire_Data[0] & 128);
 			gpio_set_pin_level(PINA4, Onewire_Data[1] & 1);
-			gpio_set_pin_level(PINA5, Onewire_Data[1] & 2);
+			//gpio_set_pin_level(PINA5, Onewire_Data[1] & 2);
 			gpio_set_pin_level(PINA6, Onewire_Data[1] & 4);
 		}
 		else{
@@ -39,9 +44,9 @@ int main(void)
 			gpio_toggle_pin_level(PINA2);
 			gpio_toggle_pin_level(PINA3);
 			gpio_toggle_pin_level(PINA4);
-			gpio_toggle_pin_level(PINA5);
+			//gpio_toggle_pin_level(PINA5);
 			gpio_toggle_pin_level(PINA6);
-			delay_ms(500);
 		}
+	delay_ms(500);
 	}
 }
