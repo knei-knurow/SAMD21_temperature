@@ -8,10 +8,17 @@ int main(void)
 
 	delay_ms(500);
 	
+	gpio_toggle_pin_level(PINA0);
+	gpio_toggle_pin_level(PINA1);
+	gpio_toggle_pin_level(PINA2);
+	gpio_toggle_pin_level(PINA3);
+	gpio_toggle_pin_level(PINA4);
+	gpio_toggle_pin_level(PINA5);
+	gpio_toggle_pin_level(PINA6);
+	
 	while (1) {
 		Onewire_ResetPulse();
-		Onewire_DetectPresence();
-		if(Onewire_SensorPresent){
+		if(Onewire_DetectPresence()){
 			Onewire_WriteData(ONEWIRE_SKIP_ROM, 1);
 			Onewire_WriteData(ONEWIRE_CONVERT_T, 1);
 			delay_ms(1000);

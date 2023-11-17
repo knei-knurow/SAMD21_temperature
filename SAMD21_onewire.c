@@ -16,15 +16,16 @@ void Onewire_ResetPulse(){
 	delay_us(1);
 }
 
-void Onewire_DetectPresence(){
+bool Onewire_DetectPresence(){
 	uint8_t LoopCountdown = 100;	//Adjust the countdown if needed
-	Onewire_SensorPresent = false;
+	bool SensorPresent = false;
 	gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);
-	while(!Onewire_SensorPresent || LoopCountdown > 0){ 
-		Onewire_SensorPresent = !gpio_get_pin_level(TEMP);
+	while(!SensorPresent || LoopCountdown > 0){ 
+		SensorPresent = !gpio_get_pin_level(TEMP);
 		LoopCountdown--;
 		delay_us(1);
 	}
+	return SensorPresent;
 }
 
 void Onewire_WriteData(uint64_t data, uint8_t bytes){
