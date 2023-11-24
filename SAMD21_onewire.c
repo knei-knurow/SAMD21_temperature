@@ -43,10 +43,10 @@ void Onewire_ReadData(uint8_t bytes){
 	for(int i=0; i<bytes*8; i++){
 		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_OUT);
 		gpio_set_pin_level(TEMP, false);					//Initiating a Read Time Slot
-		//delay_us(2);
+		delay_us(2);
 		gpio_set_pin_level(PINA5, true);
 		gpio_set_pin_direction(TEMP, GPIO_DIRECTION_IN);
-		//delay_us(5);
+		delay_us(5);
 		gpio_set_pin_level(PINA5, false);
 		Onewire_Data[i/8] |= gpio_get_pin_level(TEMP) << (i%8);
 		delay_us(60);
