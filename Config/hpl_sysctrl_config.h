@@ -46,7 +46,7 @@
 // <i> Indicates whether configuration for OSC8M is enabled or not
 // <id> enable_osc8m
 #ifndef CONF_OSC8M_CONFIG
-#define CONF_OSC8M_CONFIG 1
+#define CONF_OSC8M_CONFIG 0
 #endif
 
 // <h> 8MHz Internal Oscillator (OSC8M) Control
@@ -54,7 +54,7 @@
 // <i> Indicates whether Internal 8 Mhz Oscillator is enabled or not
 // <id> osc8m_arch_enable
 #ifndef CONF_OSC8M_ENABLE
-#define CONF_OSC8M_ENABLE 1
+#define CONF_OSC8M_ENABLE 0
 #endif
 
 // <q> On Demand Control
@@ -84,7 +84,7 @@
 // <i> Default: No Prescaling
 // <id> osc8m_presc
 #ifndef CONF_OSC8M_PRESC
-#define CONF_OSC8M_PRESC SYSCTRL_OSC8M_PRESC_3_Val
+#define CONF_OSC8M_PRESC SYSCTRL_OSC8M_PRESC_0_Val
 #endif
 
 // <q> Overwrite Default Osc Calibration
@@ -142,7 +142,7 @@
 // <i> Enable 32 Khz Output
 // <id> osc32k_arch_en32k
 #ifndef CONF_OSC32K_EN32K
-#define CONF_OSC32K_EN32K 0
+#define CONF_OSC32K_EN32K 1
 #endif
 
 // <q> Enable 1K
@@ -410,7 +410,7 @@
 // <i> Indicates whether configuration for DFLL is enabled or not
 // <id> enable_dfll48m
 #ifndef CONF_DFLL_CONFIG
-#define CONF_DFLL_CONFIG 0
+#define CONF_DFLL_CONFIG 1
 #endif
 
 // <y> Reference Clock Source
@@ -425,7 +425,7 @@
 // <i> Select the clock source.
 // <id> dfll48m_ref_clock
 #ifndef CONF_DFLL_GCLK
-#define CONF_DFLL_GCLK GCLK_CLKCTRL_GEN_GCLK3_Val
+#define CONF_DFLL_GCLK GCLK_CLKCTRL_GEN_GCLK1_Val
 #endif
 
 // <h> DFLL Control
@@ -433,7 +433,7 @@
 // <i> Indicates whether DFLL is enabled or not
 // <id> dfll48m_arch_enable
 #ifndef CONF_DFLL_ENABLE
-#define CONF_DFLL_ENABLE 0
+#define CONF_DFLL_ENABLE 1
 #endif
 
 // <q> Wait Lock
